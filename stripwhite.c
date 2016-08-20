@@ -7,14 +7,14 @@ void stripwhite(char line[], int len);
 
 int main()
 {
-    char line[MAXLINE];	/* current input line */
-    int len = 0;
-    int i = 0;
+	char line[MAXLINE];	/* current input line */
+	int len = 0;
+	int i = 0;
 
-    len = getln(line, MAXLINE);
-    
-    stripwhite(line, len);
-    printf("%s", line);
+	len = getln(line, MAXLINE);
+
+	stripwhite(line, len);
+	printf("%s", line);
 	return 0;
 }
 
@@ -35,24 +35,22 @@ int getln(char s[], int lim)
 
 /* stripwhite: remove trailing whitespace, delete entirely blank lines */
 void stripwhite(char line[], int len) {
-    int i = 0;
-    int l = len;
-    
-    /* delete blank lines */
-    if (line[0]=='\n') {
-        line[0] = '\0';
-    }
-    
-    /* strip trailing whitespace */
-    for (i=len-2; i>=0; i--) {
-        if (line[i]==' ' || line[i]=='\t') {
-            continue;
-        } else {
-            l = i;
-            break;
-        }
-    }
-    
-    line[l+1] = '\n';
-    line[l+2] = '\0';
+	int i = 0;
+
+	/* delete blank lines */
+	if (line[0]=='\n') {
+		line[0] = '\0';
+	}
+
+	/* strip trailing whitespace */
+	for (i=len-2; i>=0; i--) {
+		if (line[i]==' ' || line[i]=='\t') {
+			continue;
+		} else {
+			line[i+1] = '\n';
+			line[i+2] = '\0';
+			break;
+		}
+	}
+
 }
